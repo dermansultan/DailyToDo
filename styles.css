@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+}
+
+main{
+    margin-top: 10vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.titleSub{
+    display: inline-block;
+    text-align: center;
+    line-height: 10px;
+}
+
+.title{
+    color: #34495E;
+    font-size: 4rem;
+}
+
+.greeting{
+    color: #3F69FF;
+    font-weight: 400;
+    font-size: 1.50rem;
+}
+
+
+/* ol container */
+.todoList{
+    height: 200px;
+    flex-direction: column;
+    text-align: center;
+    list-style: none;
+    padding-left: 0; 
+}
+
+li{
+    margin-top: 10px;
+}
+
+/* Add new item */
+.addItem{
+    display: flex;
+    width: 390px;
+    height: 55px;
+    background-color: #3F69FF;
+    border-radius: 15px;
+}
+
+.addItemTxt {
+    margin: auto;
+    width: 200px;
+    font-size: 1em;
+    color: white;
+    background-color: #3F69FF;
+    font-weight: 500;
+    border: none;
+    text-align: center;
+}
+
+.addItemTxt::placeholder{
+    color: white;
+    text-align: center;
+}
+
+.addItemBtn{
+    border: 0;
+	background-color: #fff;
+    font-size: 25px;
+    color: #3F69FF;
+    background-color: whitesmoke;
+    text-align: center;
+    width: 30px;
+}
+
+/* Current Items */
+.currentItem{
+    align-self: center;
+    display: flex;
+    width: 390px;
+    height: 55px;
+    background-color: #FFb23f;
+    border-radius: 15px;
+
+}
+
+.currentItemTxt {
+    margin: auto;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+}
+
+.finishItemBtn{
+    border: 0;
+	background-color: #fff;
+    font-size: 25px;
+    color: #FF8C00;
+    background-color: whitesmoke;
+    text-align: center;
+    width: 30px;
+}
+
+.gitHubIcon{
+    position: absolute;
+    width: auto;
+    height: 45px;
+    bottom: 30px;
+    right: 40px;
+    color: #34495E;
+}
+
+/* Done Item */
+.doneItem{
+    align-self: center;
+    display: flex;
+    width: 390px;
+    height: 55px;
+    background-color: rgba(52, 73, 94, 0.25);
+    border-radius: 15px;
+    color: white;
+}
+
+.doneItemTxt{
+    margin: auto;
+    font-size: 1em;
+    text-decoration: line-through;
+    font-weight: 500;
+}
