@@ -8,26 +8,33 @@ console.log('Good Night,');
 greeting.innerHTML = 'Good Night,';
 } else if (userTime.getHours() < 12 && userTime.getHours() >= 6) {
 console.log('Good Morning,');
-greeting.innerHTML = 'Good Morning,';;
+greeting.innerHTML = 'Good Morning,';
 } else if (userTime.getHours() >= 15 && userTime.getHours < 20){
 console.log('Good Evening');
 greeting.innerHTML = 'Good Evening';
 } else {
-    console.log('Good Afternoon')
-    greeting.innerHTML = 'Good Afternoon,'
+    console.log('Good Afternoon');
+    greeting.innerHTML = 'Good Afternoon,';
 }
 }
 
 greetingUpdate(userTime);
+
+
+
 
 // Add task 
 const addBtn = document.getElementById('addItemBtn');
 addBtn.addEventListener('click', addListItem);
 var listContainer = document.querySelector('.todoList');
 
+var completedItems = [];
+localStorage.setItem('completedItems', JSON.stringify(completedItems));
+var storedCompletedItems = JSON.parse(localStorage.getItem('completedItems'))
+
+
 function addListItem() {
      console.log('Button was clicked!');
-     
      // on click add current text value of input, class, button and text div
      // create elements for newest list items
      var listItem = document.createElement('li');
@@ -58,5 +65,11 @@ function addListItem() {
 }
 
 function deleteListItem(){
-this.parentNode.remove(this)
+var completedItemTxt = this.nextSibling.innerHTML;
+console.log(completedItems);
+console.log(completedItems.length);
+completedItems.push(`${completedItemTxt}`);
+localStorage.setItem('completedItems', JSON.stringify(completedItems));
+this.parentNode.remove(this);
+
 }
