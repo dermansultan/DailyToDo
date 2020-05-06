@@ -50,6 +50,11 @@ li{
     margin-top: 10px;
 }
 
+.inputForum{
+    width: 340px;
+    display: flex;
+}
+
 /* Add new item */
 .addItem{
     display: flex;

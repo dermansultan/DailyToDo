@@ -1,3 +1,9 @@
+
+var saved = localStorage.getItem('currentItems');
+if (saved) {
+    document.querySelector('.todoList').innerHTML = saved;
+}
+
 // Greeting based on time of day
 const userTime = new Date();
 console.log(userTime.getHours());
@@ -17,20 +23,25 @@ greeting.innerHTML = 'Good Evening';
     greeting.innerHTML = 'Good Afternoon,';
 }
 }
-
 greetingUpdate(userTime);
-
-
-
 
 // Add task 
 const addBtn = document.getElementById('addItemBtn');
 addBtn.addEventListener('click', addListItem);
 var listContainer = document.querySelector('.todoList');
+var inputForum = document.querySelector('.inputForum');
 
-var completedItems = [];
-localStorage.setItem('completedItems', JSON.stringify(completedItems));
-var storedCompletedItems = JSON.parse(localStorage.getItem('completedItems'))
+//prevent enter from submitting forum
+   inputForum.addEventListener('submit', function(e){
+    e.preventDefault();
+    addListItem();
+}); 
+
+// Event Listener for pre-existing list items. 
+var deleteBtn = document.querySelectorAll('.finishItemBtn');
+for (let i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener('click', deleteListItem);
+}
 
 
 function addListItem() {
@@ -52,24 +63,22 @@ function addListItem() {
      listItemBtn.className = "finishItemBtn";
      listItemBtn.innerHTML = 'x';
 
-
      // check if user inputted a valid value then append them 
      if (listInput == "") {
          return console.log('The input was left empty...!')
      } else {
+         inputForum.reset();
         listContainer.appendChild(listItem);
         listContainer.lastElementChild.appendChild(listItemBtn);
         listContainer.lastElementChild.appendChild(listItemTxt);
+        localStorage.setItem('currentItems', listContainer.innerHTML);
         listItemBtn.addEventListener('click', deleteListItem);
      }
+     
 }
 
 function deleteListItem(){
-var completedItemTxt = this.nextSibling.innerHTML;
-console.log(completedItems);
-console.log(completedItems.length);
-completedItems.push(`${completedItemTxt}`);
-localStorage.setItem('completedItems', JSON.stringify(completedItems));
+console.log('delete was clicked');
 this.parentNode.remove(this);
-
+localStorage.setItem('currentItems', listContainer.innerHTML);
 }
