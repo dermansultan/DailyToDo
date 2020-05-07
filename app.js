@@ -25,6 +25,8 @@ greeting.innerHTML = 'Good Evening';
 }
 greetingUpdate(userTime);
 
+var completedItems = [];
+
 // Add task 
 const addBtn = document.getElementById('addItemBtn');
 addBtn.addEventListener('click', addListItem);
@@ -79,6 +81,9 @@ function addListItem() {
 
 function deleteListItem(){
 console.log('delete was clicked');
+completedItems.unshift(this.nextSibling.innerHTML);
+console.log(completedItems);
 this.parentNode.remove(this);
 localStorage.setItem('currentItems', listContainer.innerHTML);
+localStorage.setItem('completedItems' , completedItems);
 }
